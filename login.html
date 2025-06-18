@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Sign Up</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@tailwindcss/browser@latest"></script>
+    <style>
+      /* Custom CSS for transitions and animations (optional, for more refined effects) */
+      .transition-all {
+        transition: all 0.3s ease;
+      }
+      .slide-up {
+        transform: translateY(10px);
+        opacity: 0;
+      }
+      .slide-up.active {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      .fade-in {
+        opacity: 0;
+      }
+      .fade-in.active {
+        opacity: 1;
+      }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-100 to-gray-300 dark:from-gray-900 dark:to-black flex items-center justify-center min-h-screen font-sans">
+    <div class="w-full max-w-md bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden p-6 transition-all duration-500 hover:shadow-2xl hover:scale-[1.02]">
+        <div class="text-center">
+            <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4 transition-all duration-300 slide-up">
+                Login / Sign Up
+            </h2>
+            <p class="text-gray-600 dark:text-gray-400 mb-6 transition-all duration-300 slide-up">
+                Welcome! Please log in or sign up to continue.
+            </p>
+        </div>
+        <form id="loginForm" class="space-y-4 transition-all duration-300 fade-in">
+            <div>
+                <label for="loginEmail" class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Email</label>
+                <input type="email" id="loginEmail" placeholder="Enter your email" required
+                       class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 dark:text-white leading-tight focus:outline-none focus:shadow-outline bg-gray-50 dark:bg-gray-700 rounded-md transition-all duration-300 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"/>
+                <div id="loginEmailError" class="text-red-500 text-xs italic mt-1" style="display: none;"></div>
+            </div>
+            <div>
+                <label for="loginPassword" class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Password</label>
+                <input type="password" id="loginPassword" placeholder="Enter your password" required
+                       class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 dark:text-white leading-tight focus:outline-none focus:shadow-outline bg-gray-50 dark:bg-gray-700 rounded-md transition-all duration-300 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"/>
+                 <div id="loginPasswordError" class="text-red-500 text-xs italic mt-1" style="display: none;"></div>
+            </div>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-md focus:outline-none focus:shadow-outline w-full transition-all duration-300 transform hover:scale-105">
+                Login
+            </button>
+            <div class="text-center">
+                <p class="text-gray-600 dark:text-gray-400 text-sm">
+                    <a href="#" id="toggleSignUp" class="font-bold text-blue-500 hover:text-blue-700 focus:outline-none focus:shadow-outline transition-all duration-300">
+                        Don't have an account? Sign up
+                    </a>
+                </p>
+            </div>
+        </form>
+
+        <form id="signUpForm" class="space-y-4 hidden transition-all duration-300 fade-in">
+            <div>
+                <label for="signUpName" class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Name</label>
+                <input type="text" id="signUpName" placeholder="Enter your name" required
+                       class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 dark:text-white leading-tight focus:outline-none focus:shadow-outline bg-gray-50 dark:bg-gray-700 rounded-md transition-all duration-300 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"/>
+                <div id="signUpNameError" class="text-red-500 text-xs italic mt-1" style="display: none;"></div>
+            </div>
+            <div>
+                <label for="signUpEmail" class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Email</label>
+                <input type="email" id="signUpEmail" placeholder="Enter your email" required
+                       class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 dark:text-white leading-tight focus:outline-none focus:shadow-outline bg-gray-50 dark:bg-gray-700 rounded-md transition-all duration-300 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"/>
+                <div id="signUpEmailError" class="text-red-500 text-xs italic mt-1" style="display: none;"></div>
+            </div>
+            <div>
+                <label for="signUpPassword" class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2">Password</label>
+                <input type="password" id="signUpPassword" placeholder="Enter your password" required
+                       class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 dark:text-white leading-tight focus:outline-none focus:shadow-outline bg-gray-50 dark:bg-gray-700 rounded-md transition-all duration-300 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"/>
+                <div id="signUpPasswordError" class="text-red-500 text-xs italic mt-1" style="display: none;"></div>
+            </div>
+            <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-md focus:outline-none focus:shadow-outline w-full transition-all duration-300 transform hover:scale-105">
+                Sign Up
+            </button>
+            <div class="text-center">
+                <p class="text-gray-600 dark:text-gray-400 text-sm">
+                    <a href="#" id="toggleLogin" class="font-bold text-blue-500 hover:text-blue-700 focus:outline-none focus:shadow-outline transition-all duration-300">
+                        Already have an account? Log in
+                    </a>
+                </p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        const signUpForm = document.getElementById('signUpForm');
+        const toggleSignUpButton = document.getElementById('toggleSignUp');
+        const toggleLoginButton = document.getElementById('toggleLogin');
+
+        const loginEmailInput = document.getElementById('loginEmail');
+        const loginPasswordInput = document.getElementById('loginPassword');
+        const signUpNameInput = document.getElementById('signUpName');
+        const signUpEmailInput = document.getElementById('signUpEmail');
+        const signUpPasswordInput = document.getElementById('signUpPassword');
+
+        const loginEmailError = document.getElementById('loginEmailError');
+        const loginPasswordError = document.getElementById('loginPasswordError');
+        const signUpNameError = document.getElementById('signUpNameError');
+        const signUpEmailError = document.getElementById('signUpEmailError');
+        const signUpPasswordError = document.getElementById('signUpPasswordError');
+
+        function showError(inputElementId, errorMessage) {
+            const errorElement = document.getElementById(inputElementId);
+            errorElement.textContent = errorMessage;
+            errorElement.style.display = 'block';
+        }
+
+        function hideError(inputElementId) {
+            const errorElement = document.getElementById(inputElementId);
+            errorElement.style.display = 'none';
+            errorElement.textContent = ''; // Clear message
+        }
+
+        function validateEmail(email) {
+            const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        loginForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            let hasErrors = false;
+
+            if (!loginEmailInput.value.trim()) {
+                showError('loginEmailError', 'Email is required');
+                hasErrors = true;
+            } else if (!validateEmail(loginEmailInput.value.trim())) {
+                showError('loginEmailError', 'Invalid email format');
+                hasErrors = true;
+            } else {
+                hideError('loginEmailError');
+            }
+
+            if (!loginPasswordInput.value.trim()) {
+                showError('loginPasswordError', 'Password is required');
+                hasErrors = true;
+            } else {
+                hideError('loginPasswordError');
+            }
+
+            if (!hasErrors) {
+                // Simulate login process (replace with actual API call)
+                console.log('Logging in with:', loginEmailInput.value, loginPasswordInput.value);
+                alert('Login successful! (Simulated)');
+                loginForm.reset();
+            }
+        });
+
+        signUpForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            let hasErrors = false;
+
+            if (!signUpNameInput.value.trim()) {
+                showError('signUpNameError', 'Name is required');
+                hasErrors = true;
+            } else {
+                hideError('signUpNameError');
+            }
+
+            if (!signUpEmailInput.value.trim()) {
+                showError('signUpEmailError', 'Email is required');
+                hasErrors = true;
+            } else if (!validateEmail(signUpEmailInput.value.trim())) {
+                showError('signUpEmailError', 'Invalid email format');
+                hasErrors = true;
+            } else {
+                hideError('signUpEmailError');
+            }
+
+            if (!signUpPasswordInput.value.trim()) {
+                showError('signUpPasswordError', 'Password is required');
+                hasErrors = true;
+            } else if (signUpPasswordInput.value.trim().length < 6) {
+                showError('signUpPasswordError', 'Password must be at least 6 characters');
+                hasErrors = true;
+            } else {
+                hideError('signUpPasswordError');
+            }
+
+            if (!hasErrors) {
+                // Simulate sign up process (replace with actual API call)
+                console.log('Signing up with:', signUpNameInput.value, signUpEmailInput.value, signUpPasswordInput.value);
+                alert('Sign up successful! (Simulated)');
+                signUpForm.reset();
+            }
+        });
+
+        toggleSignUpButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            loginForm.classList.add('hidden');
+            signUpForm.classList.remove('hidden');
+             // Trigger animation on the form appearing
+            setTimeout(() => {
+                signUpForm.classList.add('active');
+            }, 10);
+            loginForm.classList.remove('active');
+
+        });
+
+        toggleLoginButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            signUpForm.classList.add('hidden');
+            loginForm.classList.remove('hidden');
+             // Trigger animation on the form appearing
+             setTimeout(() => {
+                loginForm.classList.add('active');
+            }, 10);
+            signUpForm.classList.remove('active');
+        });
+
+        // Initial animation on page load
+        window.addEventListener('load', () => {
+            const elements = document.querySelectorAll('.slide-up, .fade-in');
+            elements.forEach(element => {
+                element.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
