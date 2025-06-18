@@ -1,2 +1,3 @@
 # E-Commerce-Cloth-Ordering-UI
-This repository includes my E-Commerce portal UI project
+In this project, I implemented the UI of an e-commerce cloth ordering website. The project included login page, hover effects, contacts section, numerous product cards.
+Linked with a blog website.
